@@ -10,14 +10,19 @@ namespace Pong
             Raylib.InitWindow(800, 600, "Pong");
             Raylib.SetTargetFPS(60);
 
-            float xPos = 10, yPos = 275;
+            Paddle leftPaddle = new Paddle(10, 275, KeyboardKey.KEY_W, KeyboardKey.KEY_S);
+            Paddle rightPaddle = new Paddle(770, 275, KeyboardKey.KEY_UP, KeyboardKey.KEY_DOWN);
 
             while (!Raylib.WindowShouldClose())
             {
-                Raylib.BeginDrawing();
-                Raylib.ClearBackground(Color.BEIGE);
+                leftPaddle.Update();
+                rightPaddle.Update();
 
-                Raylib.DrawRectangle((int) xPos, (int) yPos, 20, 50, Color.BLACK);
+                Raylib.BeginDrawing();
+                Raylib.ClearBackground(Color.GREEN);
+
+                leftPaddle.Draw();
+                rightPaddle.Draw();
 
                 Raylib.EndDrawing();
             }
