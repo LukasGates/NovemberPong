@@ -1,3 +1,4 @@
+using System.Net.Mail;
 using System.Security.Cryptography.X509Certificates;
 using System;
 using Raylib_cs;
@@ -26,6 +27,15 @@ namespace Pong
             {
                 speed.Y = -speed.Y;
             }
+
+            foreach (Paddle p in Paddle.paddles)
+        {
+            if (Raylib.CheckCollisionRecs(rectangle, p.rectangle))
+            {
+                speed.X = -speed.X;
+            }
+        }
+
         }
 
         public void Draw()
