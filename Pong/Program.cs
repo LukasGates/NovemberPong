@@ -1,10 +1,18 @@
 ﻿using System.Collections.Generic;
 using System;
 using Raylib_cs;
+
 namespace Pong
 {
     class Program
     {
+
+        enum GameScreens 
+        {
+            Start,
+            Game,
+            GameOver
+        }
         static void Main(string[] args)
         {
             //Make spicy pong game.
@@ -13,22 +21,49 @@ namespace Pong
 
             
 
-            Paddle leftPaddle = new Paddle(10, 275, KeyboardKey.KEY_W, KeyboardKey.KEY_S);
-            Paddle rightPaddle = new Paddle(770, 275, KeyboardKey.KEY_UP, KeyboardKey.KEY_DOWN);
+            GameObject leftPaddle = new Paddle(10, 275, KeyboardKey.KEY_W, KeyboardKey.KEY_S);
+            GameObject rightPaddle = new Paddle(770, 275, KeyboardKey.KEY_UP, KeyboardKey.KEY_DOWN);
 
 
             Ball ball = new Ball();
 
+            GameScreens screen = GameScreens.Start;
+
             while (!Raylib.WindowShouldClose())
             {
-                Paddle.UpdateAll();
-            
+                if (screen == GameScreens.Start)
+                {
+                    if (Raylib.IsKeyPressed(KeyboardKey.KEY_ENTER))
+                    {
+                        screen = GameScreens.Game;
+                    }
+                }
+                else if (screen == GameScreens.Game)
+                {
+                    GameObject.UpdateAll();
+                }
+                
+                
                 Raylib.BeginDrawing();
-                Raylib.ClearBackground(Color.GREEN);
+                
 
-                Paddle.DrawAll();
-                ball.Update();
-                ball.Draw();
+                 if (screen == GameScreens.Start)
+                {
+                    Texture2D screenTexture;
+                    screenTexture = Raylib.LoadTexture("Sscreen.png");
+                    Raylib.DrawTexture(screenTexture, (int)65, (int)1, Color.WHITE);
+                    Raylib.DrawText("Press ENTER to start", 73, 545, 58, Color.ORANGE);
+                    Raylib.ClearBackground(Color.BLACK);
+                }
+                else if (screen == GameScreens.Game)
+                {
+                    Raylib.ClearBackground(Color.GREEN);
+                    GameObject.DrawAll();
+                }
+
+                
+                //ball.Update();
+                //ball.Draw();
                 Raylib.EndDrawing();
             }
 

@@ -5,16 +5,20 @@ using Raylib_cs;
 using System.Numerics;
 namespace Pong
 {
-    public class Ball
+    public class Ball : GameObject
     {
-        public Rectangle rectangle;
-        public Vector2 speed = new Vector2(2,2);
+        //public Rectangle rectangle;
+        public Vector2 speed = new Vector2(2, 2);
+
+        Texture2D ballTexture;
 
         public Ball()
         {
-          rectangle = new Rectangle(390, 290, 20, 20);
+            ballTexture = Raylib.LoadTexture("RLball.png");
+            rectangle = new Rectangle(390, 290, 20, 20);
+            gameObjects.Add(this);
         }
-        public void Update()
+        public override void Update()
         {
             rectangle.x += speed.X;
             rectangle.y += speed.Y;
@@ -23,24 +27,32 @@ namespace Pong
             {
                 speed.X = -speed.X;
             }
-             if (rectangle.y > 600 - 20 || rectangle.y < 0)
+            if (rectangle.y > 600 - 20 || rectangle.y < 0)
             {
                 speed.Y = -speed.Y;
             }
 
-            foreach (Paddle p in Paddle.paddles)
-        {
-            if (Raylib.CheckCollisionRecs(rectangle, p.rectangle))
+            foreach (GameObject p in GameObject.gameObjects)
             {
-                speed.X = -speed.X;
+                if (p != this)
+                {
+                    if (Raylib.CheckCollisionRecs(rectangle, p.rectangle))
+                    {
+                        speed.X = -speed.X;
+                    }
+                }
             }
-        }
 
         }
 
-        public void Draw()
+        public override void Draw()
         {
-            Raylib.DrawRectangleRec(rectangle, Color.BLACK);
+            Raylib.DrawTexture(ballTexture, (int)rectangle.x, (int)rectangle.y, Color.WHITE);
         }
+
+        //public void Draw()
+        //{
+        //     Raylib.DrawRectangleRec(rectangle, Color.BLACK);
+        //}
     }
 }

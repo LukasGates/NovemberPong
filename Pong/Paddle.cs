@@ -5,12 +5,14 @@ namespace Pong
 {
     public class Paddle : GameObject
     {
-        public static List<Paddle> paddles = new List<Paddle>();
+        
         //public float x;
         //public float y;
         //public Rectangle rectangle;
         public KeyboardKey upKey;
         public KeyboardKey downKey;
+
+        Texture2D carTexture;
 
         public Paddle(float xStart, float yStart, KeyboardKey up, KeyboardKey down)
         {
@@ -20,7 +22,9 @@ namespace Pong
             upKey = up;
             downKey = down;
 
-            paddles.Add(this);
+            gameObjects.Add(this);
+
+            carTexture = Raylib.LoadTexture("car.png");
         }
 
         public override void Update()
@@ -35,25 +39,27 @@ namespace Pong
             }
         }
 
-        public static void UpdateAll()
+        //public static void UpdateAll()
+        //{
+       //     foreach (Paddle p in gameObjects)
+         //   {
+           //     p.Update();
+            // }
+        //}
+        //Texture2D car = Raylib.LoadTexture("car.png");
+
+        public override void Draw()
         {
-            foreach (Paddle p in paddles)
-            {
-                p.Update();
-            }
+            Raylib.DrawTexture(carTexture, (int)rectangle.x, (int)rectangle.y, Color.WHITE);
+            //      Raylib.DrawRectangleRec(rectangle, Color.BLACK);
+           
         }
-        Texture2D car = Raylib.LoadTexture("car.png");
-        //public void Draw()
-        // {
-        //      Raylib.DrawRectangleRec(rectangle, Color.BLACK);
-        //      Raylib.DrawTextureRec(car, Color.WHITE);
-        //  }
-        public static void DrawAll()
-        {
-            foreach (Paddle p in paddles)
-            {
-                p.Draw();
-            }
-        }
+        //public static void DrawAll()
+        //{
+        //    foreach (Paddle p in gameObjects)
+        //    {
+        //        p.Draw();
+        //    }
+        //}
     }
 }
