@@ -15,7 +15,7 @@ namespace Pong
         public Ball()
         {
             ballTexture = Raylib.LoadTexture("RLball.png");
-            rectangle = new Rectangle(390, 290, 20, 20);
+            rectangle = new Rectangle(490, 290, 20, 20);
             gameObjects.Add(this);
         }
         public override void Update()
@@ -23,11 +23,11 @@ namespace Pong
             rectangle.x += speed.X;
             rectangle.y += speed.Y;
 
-            if (rectangle.x > 800 - 20 || rectangle.x < 0)
+            if (rectangle.x > 1000 - 64 || rectangle.x < 0)
             {
                 speed.X = -speed.X;
             }
-            if (rectangle.y > 600 - 20 || rectangle.y < 0)
+            if (rectangle.y > 600 - 64 || rectangle.y < 0)
             {
                 speed.Y = -speed.Y;
             }

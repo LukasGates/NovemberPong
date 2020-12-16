@@ -16,13 +16,14 @@ namespace Pong
         static void Main(string[] args)
         {
             //Make spicy pong game.
-            Raylib.InitWindow(800, 600, "Pong");
+            Raylib.InitWindow(1000, 600, "Pong");
             Raylib.SetTargetFPS(60);
 
             
 
-            GameObject leftPaddle = new Paddle(10, 275, KeyboardKey.KEY_W, KeyboardKey.KEY_S);
-            GameObject rightPaddle = new Paddle(770, 275, KeyboardKey.KEY_UP, KeyboardKey.KEY_DOWN);
+            GameObject leftPaddle = new Paddle(30, 275, KeyboardKey.KEY_W, KeyboardKey.KEY_S);
+            GameObject rightPaddle = new Paddle(850, 275, KeyboardKey.KEY_UP, KeyboardKey.KEY_DOWN);
+            
 
 
             Ball ball = new Ball();
@@ -51,8 +52,8 @@ namespace Pong
                 {
                     Texture2D screenTexture;
                     screenTexture = Raylib.LoadTexture("Sscreen.png");
-                    Raylib.DrawTexture(screenTexture, (int)65, (int)1, Color.WHITE);
-                    Raylib.DrawText("Press ENTER to start", 73, 545, 58, Color.ORANGE);
+                    Raylib.DrawTexture(screenTexture, (int)165, (int)1, Color.WHITE);
+                    Raylib.DrawText("Press ENTER to start", 173, 545, 58, Color.ORANGE);
                     Raylib.ClearBackground(Color.BLACK);
                 }
                 else if (screen == GameScreens.Game)
