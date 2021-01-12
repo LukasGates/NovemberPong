@@ -12,21 +12,23 @@ namespace Pong
         public KeyboardKey upKey;
         public KeyboardKey downKey;
 
-        Texture2D carTexture;
-        Texture2D carTextureL;
+        Texture2D car;
+        //Texture2D carTextureL;
 
-        public Paddle(float xStart, float yStart, KeyboardKey up, KeyboardKey down)
+        public Paddle(float xStart, float yStart, KeyboardKey up, KeyboardKey down, Texture2D carTexture)
         {
+            this.car = carTexture;
             rectangle = new Rectangle(xStart, yStart, 20, 50);
             //x = xStart;
             //y = yStart;
             upKey = up;
             downKey = down;
+        
 
             gameObjects.Add(this);
 
-            carTexture = Raylib.LoadTexture("car.png");
-            carTextureL = Raylib.LoadTexture("carL.png");
+            //carTexture = Raylib.LoadTexture("car.png");
+            //carTextureL = Raylib.LoadTexture("carL.png");
         }
 
         public override void Update()
@@ -52,8 +54,8 @@ namespace Pong
 
         public override void Draw()
         {
-            Raylib.DrawTexture(carTexture, (int)rectangle.x, (int)rectangle.y, Color.WHITE);
-            Raylib.DrawTexture(carTextureL, (int)rectangle.x, (int)rectangle.y, Color.WHITE);
+            Raylib.DrawTexture(car, (int)rectangle.x, (int)rectangle.y, Color.WHITE);
+            //Raylib.DrawTexture(carTextureL, (int)rectangle.x, (int)rectangle.y, Color.WHITE);
             //      Raylib.DrawRectangleRec(rectangle, Color.BLACK);
            
         }

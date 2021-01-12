@@ -19,10 +19,12 @@ namespace Pong
             Raylib.InitWindow(1000, 600, "Pong");
             Raylib.SetTargetFPS(60);
 
-            
+            Texture2D carTexture = Raylib.LoadTexture("car.png");
 
-            GameObject leftPaddle = new Paddle(30, 275, KeyboardKey.KEY_W, KeyboardKey.KEY_S);
-            GameObject rightPaddle = new Paddle(850, 275, KeyboardKey.KEY_UP, KeyboardKey.KEY_DOWN);
+            Texture2D carTextureL = Raylib.LoadTexture("carL.png");
+
+            GameObject leftPaddle = new Paddle(30, 275, KeyboardKey.KEY_W, KeyboardKey.KEY_S, carTextureL);
+            GameObject rightPaddle = new Paddle(850, 275, KeyboardKey.KEY_UP, KeyboardKey.KEY_DOWN, carTexture);
             
 
 
