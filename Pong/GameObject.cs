@@ -25,7 +25,7 @@ namespace Pong
         public virtual void Draw()
         {
             Raylib.DrawRectangleRec(rectangle, Color.BLACK);
-            //Raylib.DrawTextureRec(car, Color.WHITE);
+            
         }
         public static void DrawAll()
         {

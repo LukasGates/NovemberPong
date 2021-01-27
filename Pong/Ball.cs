@@ -10,6 +10,7 @@ namespace Pong
         //public Rectangle rectangle;
         public Vector2 speed = new Vector2(2, 2);
 
+        //Rocket League boll texture
         Texture2D ballTexture;
 
         public Ball()
@@ -18,6 +19,8 @@ namespace Pong
             rectangle = new Rectangle(490, 290, 20, 20);
             gameObjects.Add(this);
         }
+
+        //Boll spawn + movement
         public override void Update()
         {
             rectangle.x += speed.X;
@@ -50,9 +53,6 @@ namespace Pong
             Raylib.DrawTexture(ballTexture, (int)rectangle.x, (int)rectangle.y, Color.WHITE);
         }
 
-        //public void Draw()
-        //{
-        //     Raylib.DrawRectangleRec(rectangle, Color.BLACK);
-        //}
+        
     }
 }

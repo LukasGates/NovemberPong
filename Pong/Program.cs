@@ -15,10 +15,12 @@ namespace Pong
         }
         static void Main(string[] args)
         {
-            //Make spicy pong game.
+            //pong game med Rocket League bilar + boll.
             Raylib.InitWindow(1000, 600, "Pong");
             Raylib.SetTargetFPS(60);
 
+
+            //Bil texturer
             Texture2D carTexture = Raylib.LoadTexture("car.png");
 
             Texture2D carTextureL = Raylib.LoadTexture("carL.png");
@@ -26,10 +28,10 @@ namespace Pong
             GameObject leftPaddle = new Paddle(30, 275, KeyboardKey.KEY_W, KeyboardKey.KEY_S, carTextureL);
             GameObject rightPaddle = new Paddle(850, 275, KeyboardKey.KEY_UP, KeyboardKey.KEY_DOWN, carTexture);
             
-
-
             Ball ball = new Ball();
 
+
+            //start
             GameScreens screen = GameScreens.Start;
 
             while (!Raylib.WindowShouldClose())

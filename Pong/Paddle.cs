@@ -13,8 +13,9 @@ namespace Pong
         public KeyboardKey downKey;
 
         Texture2D car;
-        //Texture2D carTextureL;
+       
 
+        //Start position för bilar/paddles
         public Paddle(float xStart, float yStart, KeyboardKey up, KeyboardKey down, Texture2D carTexture)
         {
             this.car = carTexture;
@@ -27,8 +28,7 @@ namespace Pong
 
             gameObjects.Add(this);
 
-            //carTexture = Raylib.LoadTexture("car.png");
-            //carTextureL = Raylib.LoadTexture("carL.png");
+            
         }
 
         public override void Update()
@@ -43,14 +43,7 @@ namespace Pong
             }
         }
 
-        //public static void UpdateAll()
-        //{
-       //     foreach (Paddle p in gameObjects)
-         //   {
-           //     p.Update();
-            // }
-        //}
-        //Texture2D car = Raylib.LoadTexture("car.png");
+    
 
         public override void Draw()
         {
